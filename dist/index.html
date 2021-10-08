@@ -1,0 +1,63 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="">
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="https://unpkg.com/loglevel/dist/loglevel.min.js"></script>
+
+<script type="text/javascript" src="./scripts/global.js"></script>
+<script type="text/javascript" src="./scripts/logger.js"></script>
+<script type="text/javascript" src="./scripts/provider.js"></script>
+<script type="text/javascript">
+    let testVar1 = "this is text string"
+    let testVar2 = [
+        "apples", "oranges", "bananas",
+    ]
+    let testVar3 = false
+    let testVar4 = 10973.54
+    let testVar5 = {
+        name: "asd",
+        results: [
+            {
+                id: 1,
+                name: "test name 1",
+            },
+            {
+                id: 2,
+                name: "test name 2",
+            },
+        ],
+    }
+    
+    $(function () {
+        //*
+        let logging = log.noConflict()
+        logging.setDefaultLevel("trace")
+        //*/
+        logging.trace("Provider.detail", Provider.detail)
+        /*
+        logging.trace("testVar5", testVar1)
+        logging.debug("testVar5", testVar2)
+        logging.info("testVar5", testVar3)
+        logging.warn("testVar5", testVar4)
+        logging.error("testVar5", testVar5)
+        //*/
+        /*
+        Logger.toggle()
+        
+        
+        Logger.trace("Trace", testVar1, ln())
+        Logger.trace("Debug", testVar2, ln())
+        Logger.trace("Info", testVar3, ln())
+        Logger.trace("Warn", testVar4, ln())
+        Logger.trace("Error", testVar5, ln())
+        //*/
+    })
+</script>
+</body>
+</html>
