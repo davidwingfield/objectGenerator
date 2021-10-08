@@ -111,12 +111,12 @@
         $uCase = strtoupper($name);
         $fileName = $cCase . "Model.php";
 
-        $model_template = "
-<?php
-    namespace Src\App\Controllers;
-
-    use Src\Core\Controller;
-
+        $model_template = "<?php
+    namespace Src\App\Models;
+    
+    use Exception;
+    use Src\Core\Model;
+    
 	/**
      * Short $cCase Description
      *
@@ -125,7 +125,7 @@
      * @package            Application\App
      * @subpackage         Controllers
      */
-    class $cCase extends Controller
+    class ${cCase}Model extends Model
     {
     
     ";
@@ -136,7 +136,7 @@
 			
 		);
 		
-		    public static function get(int $id = null): array
+		public static function get(int $id = null): array
         {
             
 			try{
@@ -145,21 +145,30 @@
             }
 
             Model::$db->where("enabled", 1);
-				return Model::$db->get("self::$dbTable");
+				return Model::$db->get(self::$dbTable);
 				} catch(Exception $e){
 					return [];
 				}
         }
         
-        public static function update(array $params = []]): array
+        public static function getOne(int $id = null): array
         {
-            if (!is_null($id)) {
+			try{
+			if (!is_null($id)) {
                 Model::$db->where("id", $id);
             }
 
             Model::$db->where("enabled", 1);
-
-            return Model::$db->get("provider");
+				return Model::$db->getOne(self::$dbTable);
+				} catch(Exception $e){
+					return [];
+				}
+        }
+        
+        public static function update(array $params = []): array
+        {
+            $id = 1;
+            return self::get($id);
         }
     }
 ';
@@ -456,8 +465,8 @@ $cCase.init()
 
         $table_fields = getTableFields($TABLE_NAME);
         buildScripts($TABLE_NAME, $table_fields);
-
+        buildModel($TABLE_NAME, $table_fields);
     }
 
-    exe("company");
+    exe();
 ?>

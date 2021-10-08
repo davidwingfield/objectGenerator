@@ -11,10 +11,10 @@ const Provider = (function () {
 	const _input_provider_email = document.getElementById('input_provider_email')
 	const _input_provider_website = document.getElementById('input_provider_website')
 	const _input_provider_enabled = document.getElementById('input_provider_enabled')
-	const _input_provider_created_by = document.getElementById('input_provider_created_by')
 	const _input_provider_date_created = document.getElementById('input_provider_date_created')
-	const _input_provider_modified_by = document.getElementById('input_provider_modified_by')
+	const _input_provider_created_by = document.getElementById('input_provider_created_by')
 	const _input_provider_date_modified = document.getElementById('input_provider_date_modified')
+	const _input_provider_modified_by = document.getElementById('input_provider_modified_by')
 	const _input_provider_note = document.getElementById('input_provider_note')
     let user_id = (document.getElementById('user_id')) ? (!isNaN(parseInt(document.getElementById('user_id').value))) ? parseInt(document.getElementById('user_id').value) : 4 : 4
     
@@ -33,10 +33,10 @@ const Provider = (function () {
 			email: null,
 			website: null,
 			enabled: 1,
-			created_by: user_id,
 			date_created: formatDateMySQL(),
-			modified_by: user_id,
+			created_by: user_id,
 			date_modified: formatDateMySQL(),
+			modified_by: user_id,
 			note: null
         }
     }
@@ -66,10 +66,10 @@ const Provider = (function () {
 			detail.email = (provider.email)?provider.email:null
 			detail.website = (provider.website)?provider.website:null
 			detail.enabled = (provider.enabled)?provider.enabled:1
-			detail.created_by = (provider.created_by)?provider.created_by:created_by
 			detail.date_created = (provider.date_created)?provider.date_created:formatDateMySQL()
-			detail.modified_by = (provider.modified_by)?provider.modified_by:modified_by
+			detail.created_by = (provider.created_by)?provider.created_by:created_by
 			detail.date_modified = (provider.date_modified)?provider.date_modified:formatDateMySQL()
+			detail.modified_by = (provider.modified_by)?provider.modified_by:modified_by
 			detail.note = (provider.note)?provider.note:null
         }
         
